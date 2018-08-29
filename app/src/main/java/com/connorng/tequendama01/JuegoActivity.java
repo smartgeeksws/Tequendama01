@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,9 +42,10 @@ public class JuegoActivity extends Activity implements View.OnClickListener {
         iv30 = (ImageView)findViewById(R.id.iv30);
         iv31= (ImageView)findViewById(R.id.iv31);
 
-        SharedPreferences jugadores = getSharedPreferences("jugadores",Context.MODE_PRIVATE);
+        SharedPreferences jugadores = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         jugador1 = jugadores.getString("JUGADORUNO","No hay");
         jugador2 = jugadores.getString("JUGADORDOS","No hay");
+        Toast.makeText(getApplicationContext(),"funciona "+jugador1,Toast.LENGTH_SHORT).show();
 
         tvJugador1.setText(""+jugador1);
         tvJugador2.setText(""+jugador2);
@@ -113,6 +117,32 @@ public class JuegoActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+
+      if(imagenSeleccionada1 != null && imagenSeleccionada2 != null){
+          return;
+       }
+
+       final ImageView imgTempo1 = (ImageView)findViewById(view.getId());
+      int recursoImagenTempo1 = (int) view.getTag();
+      imgTempo1.setImageResource(recursoImagenTempo1);
+
+      if(imagenSeleccionada1 == null){
+          imagenSeleccionada1 = view;
+          imgTempo1.setEnabled(true);
+      }else{
+          imagenSeleccionada2 = view;
+
+          imgTemp1 = (ImageView)findViewById(imagenSeleccionada1.getId());
+          imgTemp2 = (ImageView)findViewById(imagenSeleccionada2.getId());
+          imgTemp1.setEnabled(true);
+          int rscImg1 = (int) imagenSeleccionada1.getTag();
+          int rscImg2 = (int) imagenSeleccionada2.getTag();
+
+          if(rscImg1 == rscImg2){
+              MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(),R.raw.bien);
+              mediaPlayer.start();
+          }
+      }
 
     }
 }

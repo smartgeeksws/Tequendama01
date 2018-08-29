@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RegistroActivity extends AppCompatActivity {
 
@@ -31,11 +32,17 @@ public class RegistroActivity extends AppCompatActivity {
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor editor = preferences.edit();
                 if (!TextUtils.isEmpty(nicknameUno.getText().toString()) && !TextUtils.isEmpty(nicknameDos.getText().toString().trim())){
-                    editor.putString("JUGADORUNO",nicknameDos.getText().toString());
-                    editor.putString("JUGADORDOS",nicknameDos.getText().toString());
+                    String nombre1 =nicknameUno.getText().toString();
+                    String nombre2 = nicknameDos.getText().toString();
+                    Toast.makeText(getApplicationContext(),""+nicknameUno.getText().toString(),Toast.LENGTH_SHORT).show();
+                    editor.putString("JUGADORUNO",nombre1);
+                    editor.putString("JUGADORDOS",nombre2);
+                    editor.commit();
                     Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
                     startActivity(intent);
-                };
+                }else{
+                    Toast.makeText(getApplicationContext(),"error",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
