@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".RegistroActivity" />
         <activity android:name=".MenuActivity" />
-        <activity android:name=".NivelesActivity"></activity>
+        <activity android:name=".NivelesActivity" />
+        <activity android:name=".JuegoActivity"></activity>
     </application>
 
 </manifest>
