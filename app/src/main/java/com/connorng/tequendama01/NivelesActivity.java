@@ -24,8 +24,9 @@ public class NivelesActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
 switch (v.getId()){
     case R.id.btnNivelFacil:
-        Intent intentFacil = new Intent(getApplicationContext(),JuegoActivity.class);
+        Intent intentFacil = new Intent(NivelesActivity.this,JuegoActivity.class);
         startActivity(intentFacil);
+        break;
 }
     }
 }

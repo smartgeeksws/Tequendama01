@@ -19,7 +19,7 @@
         <activity android:name=".RegistroActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".NivelesActivity" />
-        <activity android:name=".JuegoActivity"></activity>
+        <activity android:name=".JuegoActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>
