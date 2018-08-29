@@ -17,6 +17,8 @@ public class NivelesActivity extends AppCompatActivity implements View.OnClickLi
         normal = (Button)findViewById(R.id.btnNivelNormal);
         dificil = (Button)findViewById(R.id.btnNivelDificil);
 
+        facil.setOnClickListener(this);
+
 
     }
 
